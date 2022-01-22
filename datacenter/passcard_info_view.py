@@ -18,8 +18,9 @@ def get_duration(visit):
 
 def format_duration(duration, visit):
     if visit.leaved_at is None:
-        crutch = -7
-        return str(duration)[:crutch]
+        duration = str(duration)
+        short_duration = duration.split('.')[0]
+        return short_duration
     else:
         return str(duration)
 
