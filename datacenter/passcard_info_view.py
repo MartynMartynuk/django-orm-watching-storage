@@ -27,10 +27,7 @@ def format_duration(duration, visit):
 
 def is_visit_long(duration):
     condition = datetime.timedelta(hours=1)
-    if duration >= condition:
-        return True
-    else:
-        return False
+    return duration >= condition
 
 
 def passcard_info_view(request, passcode):
