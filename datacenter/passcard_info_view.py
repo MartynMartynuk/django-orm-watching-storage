@@ -1,6 +1,5 @@
 import datetime
 from django.utils.timezone import localtime
-from django.utils.timezone import now
 from datacenter.models import Passcard
 from datacenter.models import Visit
 from django.shortcuts import render
@@ -19,7 +18,6 @@ def get_duration(visit):
 
 def format_duration(duration, visit):
     if visit.leaved_at is None:
-        # crutch - костыль для вывода времени без уточнения utc
         crutch = -7
         return str(duration)[:crutch]
     else:
@@ -36,7 +34,6 @@ def is_visit_long(duration):
 
 def passcard_info_view(request, passcode):
     passcard = Passcard.objects.get(passcode=passcode)
-    # Программируем здесь
     this_passcard_visits = []
 
     visits = Visit.objects.filter(passcard=passcard)
